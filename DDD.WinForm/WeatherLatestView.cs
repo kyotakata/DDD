@@ -32,14 +32,14 @@ LIMIT 1
 ";
 
             DataTable dt = new DataTable();
-            using (var connection = new SQLiteConnection(ConnectionString))
-            using (var command = new SQLiteCommand(sql, connection))
-            {
-                connection.Open();
+            using (var connection = new SQLiteConnection(ConnectionString)) //SQLiteのインスタンス生成
+            using (var command = new SQLiteCommand(sql, connection))    // コマンドのインスタンス生成
+            {//usingブロックを抜けるタイミングで自動的にリソースが破棄されるようにしている
+                connection.Open();    // データベースへの接続を開く
                 command.Parameters.AddWithValue("@AreaId", this.AreaIdTextBox.Text);
                 using (var adapter = new SQLiteDataAdapter(command))
                 {
-                    adapter.Fill(dt);
+                    adapter.Fill(dt);    // データ取得
                 }
             }
 
