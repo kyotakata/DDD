@@ -49,6 +49,7 @@
     <Compile Include="Common\CommonConst.cs" />
     <Compile Include="Common\CommonFunc.cs" />
     <Compile Include="Data\WeatherSQLite.cs" />
+    <Compile Include="ViewModels\WeatherLatestViewModel.cs" />
     <Compile Include="WeatherLatestView.cs">
       <SubType>Form</SubType>
     </Compile>
