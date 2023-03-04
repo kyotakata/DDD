@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DDD.Domain.ValueObjects
 {
-    public sealed class Temperature
+    public sealed class Temperature : ValueObject<Temperature>
     {
         // constは無条件にstaticメンバ扱いとなるので、明示的にstatic修飾子を指定する必要がない。
         public const int DecimalPoint = 2;
@@ -37,24 +37,9 @@ namespace DDD.Domain.ValueObjects
 
         }
 
-        public override bool Equals(object obj)
+        protected override bool EqualsCore(Temperature other)
         {
-            if (obj is Temperature vo)
-            {
-                return Value == vo.Value;
-            }
-            return false;
+            return Value == other.Value;
         }
-
-        public static bool operator ==(Temperature vo1, Temperature vo2)
-        {
-            return Equals(vo1, vo2);
-        }
-
-        public static bool operator !=(Temperature vo1, Temperature vo2)
-        {
-            return !Equals(vo1, vo2);
-        }
-
     }
 }
