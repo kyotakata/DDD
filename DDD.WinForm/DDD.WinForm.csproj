@@ -46,8 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\CommonConst.cs" />
-    <Compile Include="Common\CommonFunc.cs" />
     <Compile Include="Data\WeatherSQLite.cs" />
     <Compile Include="ViewModels\WeatherLatestViewModel.cs" />
     <Compile Include="WeatherLatestView.cs">
@@ -97,6 +95,9 @@
       <Project>{5eaddd20-5e4b-4b17-b364-2d37e980474c}</Project>
       <Name>DDD.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
