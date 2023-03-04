@@ -53,7 +53,7 @@ namespace DDD.Domain.ValueObjects
 
         public static bool operator !=(Temperature vo1, Temperature vo2)
         {
-            return Equals(vo1, vo2);
+            return !Equals(vo1, vo2);
         }
 
     }
