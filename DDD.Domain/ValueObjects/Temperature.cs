@@ -36,5 +36,25 @@ namespace DDD.Domain.ValueObjects
             }
 
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Temperature vo)
+            {
+                return Value == vo.Value;
+            }
+            return false;
+        }
+
+        public static bool operator ==(Temperature vo1, Temperature vo2)
+        {
+            return Equals(vo1, vo2);
+        }
+
+        public static bool operator !=(Temperature vo1, Temperature vo2)
+        {
+            return Equals(vo1, vo2);
+        }
+
     }
 }
