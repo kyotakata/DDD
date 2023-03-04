@@ -3,7 +3,6 @@ using DDD.Domain.Repositories;
 using DDD.WinForm.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Data;
 
 namespace DDDTest.Tests
 {

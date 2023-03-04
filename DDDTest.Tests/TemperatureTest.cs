@@ -1,6 +1,5 @@
 ﻿using DDD.Domain.ValueObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace DDDTest.Tests
 {
