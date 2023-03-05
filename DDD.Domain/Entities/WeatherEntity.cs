@@ -20,5 +20,34 @@ namespace DDD.Domain.Entities
         public DateTime DataDate { get; }
         public Condition Condition { get; }
         public Temperature Temperature { get; }
+
+        public bool IsMousho()
+        {
+            //if (Condition== Condition.Sunny)
+            if (Condition.IsSunny())
+                if (Temperature.Value >= 30)
+                    return true;
+
+            return false;
+        }
+
+
+        public bool IsOK()
+        {
+            // 簡単にできる
+            //if (DataDate < DateTime.Now.AddMonths(-1))
+            //    if (Temperature < 10) return false;
+
+            if (DataDate < DateTime.Now.AddMonths(-1))
+            {
+                if (Temperature.Value < 10)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
     }
 }

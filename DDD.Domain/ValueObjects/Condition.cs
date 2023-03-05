@@ -8,6 +8,26 @@ namespace DDD.Domain.ValueObjects
 {
     public sealed class Condition : ValueObject<Condition>
     {
+        /// <summary>
+        /// 不明
+        /// </summary>
+        public static readonly Condition None = new Condition(0);
+
+        /// <summary>
+        /// 晴れ
+        /// </summary>
+        public static readonly Condition Sunny = new Condition(1);
+
+        /// <summary>
+        /// 曇り
+        /// </summary>
+        public static readonly Condition Cloudy = new Condition(2);
+
+        /// <summary>
+        /// 雨
+        /// </summary>
+        public static readonly Condition Rainy = new Condition(3);
+
         public Condition(int value)
         {
             Value = value;
@@ -19,16 +39,21 @@ namespace DDD.Domain.ValueObjects
         {
             get
             {
-                if (this.Value == 1)
+                if (this == Sunny)
                     return "晴れ";
-                else if (this.Value == 2)
+                else if (this == Cloudy)
                     return "曇り";
-                else if (this.Value == 3)
+                else if (this == Rainy)
                     return "雨";
 
                 return "不明";
 
             }
+        }
+
+        public bool IsSunny()
+        {
+            return this == Sunny;
         }
 
         protected override bool EqualsCore(Condition other)
