@@ -1,6 +1,5 @@
 ﻿using DDD.Domain.Entities;
 using DDD.Domain.Repositories;
-using DDD.WinForm.Common;
 using System;
 using System.Data.SQLite;
 
@@ -20,7 +19,7 @@ order by DataDate desc
 LIMIT 1
 ";
 
-            using (var connection = new SQLiteConnection(CommonConst.ConnectionString)) //SQLiteのインスタンス生成
+            using (var connection = new SQLiteConnection(SQLiteHelper.ConnectionString)) //SQLiteのインスタンス生成
             using (var command = new SQLiteCommand(sql, connection))    // コマンドのインスタンス生成
             {//usingブロックを抜けるタイミングで自動的にリソースが破棄されるようにしている
                 connection.Open();    // データベースへの接続を開く

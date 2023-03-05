@@ -8,5 +8,6 @@ namespace DDD.Infrastructure.SQLite
 {
     internal class SQLiteHelper
     {
+        internal const string ConnectionString = @"Data Source=C:\Users\kyota\source\repos\DDD\DDD.db;Version=3;";
     }
 }

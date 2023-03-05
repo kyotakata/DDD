@@ -1,5 +1,4 @@
 ﻿using DDD.Domain.ValueObjects;
-using DDD.WinForm.Common;
 using DDD.Infrastructure.SQLite;
 using DDD.WinForm.ViewModels;
 using System;
