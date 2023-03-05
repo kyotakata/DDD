@@ -1,6 +1,6 @@
 ﻿using DDD.Domain.Repositories;
 using DDD.Domain.ValueObjects;
-using DDD.WinForm.Common;
+using DDD.Infrastructure.SQLite;
 using System;
 
 namespace DDD.WinForm.ViewModels
@@ -9,6 +9,19 @@ namespace DDD.WinForm.ViewModels
     {
         private IＷeatherRepository _ｗeather;
 
+        /// <summary>
+        /// コンストラクタ(本番コード用)
+        /// </summary>
+        public WeatherLatestViewModel()
+            :this(new WeatherSQLite())
+        {
+
+        }
+
+        /// <summary>
+        /// コンストラクタ(テストコード用でもある)
+        /// </summary>
+        /// <param name="ｗeather">テストコードの時直接引数指定</param>
         public WeatherLatestViewModel(IＷeatherRepository ｗeather)
         {
             _ｗeather = ｗeather;
