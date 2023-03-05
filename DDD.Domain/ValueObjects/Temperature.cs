@@ -28,7 +28,7 @@ namespace DDD.Domain.ValueObjects
         {
             get
             {
-                return FloatHelper.RoundString(Value, 2);
+                return Value.RoundString(2);
             }
 
         }
@@ -37,7 +37,7 @@ namespace DDD.Domain.ValueObjects
         {
             get
             {
-                return FloatHelper.RoundString(Value, 2) + UnitName;
+                return Value.RoundString(2) + UnitName;
             }
 
         }
@@ -46,7 +46,7 @@ namespace DDD.Domain.ValueObjects
         {
             get
             {
-                return FloatHelper.RoundString(Value, 2) +" "+ UnitName;
+                return Value.RoundString(2) +" "+ UnitName;
             }
 
         }
