@@ -42,12 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLite\WeatherSQLite.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DDD.Domain\DDD.Domain.csproj">
       <Project>{e38a6be4-cb15-43e5-b2f5-ae441db442be}</Project>
       <Name>DDD.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Data.SQLite">
+      <Version>1.0.117</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

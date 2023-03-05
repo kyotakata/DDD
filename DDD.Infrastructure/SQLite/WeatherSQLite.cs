@@ -1,12 +1,14 @@
-﻿using DDD.WinForm.Common;
-using System.Data;
+﻿using DDD.Domain.Entities;
+using DDD.Domain.Repositories;
+using DDD.WinForm.Common;
+using System;
 using System.Data.SQLite;
 
-namespace DDD.WinForm.Data
+namespace DDD.Infrastructure.SQLite
 {
-    public static class WeatherSQLite
+    public class WeatherSQLite: IＷeatherRepository
     {
-        public static DataTable GetLatest(int areaId)
+        public WeatherEntity GetLatest(int areaId)
         {
             string sql = @"
 select DataDate,
@@ -18,18 +20,24 @@ order by DataDate desc
 LIMIT 1
 ";
 
-            DataTable dt = new DataTable();
             using (var connection = new SQLiteConnection(CommonConst.ConnectionString)) //SQLiteのインスタンス生成
             using (var command = new SQLiteCommand(sql, connection))    // コマンドのインスタンス生成
             {//usingブロックを抜けるタイミングで自動的にリソースが破棄されるようにしている
                 connection.Open();    // データベースへの接続を開く
                 command.Parameters.AddWithValue("@AreaId", areaId);
-                using (var adapter = new SQLiteDataAdapter(command))
+                using (var reader = command.ExecuteReader())
                 {
-                    adapter.Fill(dt);    // データ取得
+                    while (reader.Read())
+                    {
+                        return new WeatherEntity(
+                            Convert.ToInt32(reader["AreaId"]),
+                            Convert.ToDateTime(reader["DataDate"]),
+                            Convert.ToInt32(reader["Condition"]),
+                            Convert.ToSingle(reader["Temperature"]));
+                    }
                 }
             }
-            return dt;
+            return null;
         }
     }
 }
