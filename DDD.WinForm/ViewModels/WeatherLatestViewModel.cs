@@ -1,12 +1,10 @@
 ﻿using DDD.Domain.Repositories;
-using DDD.Domain.ValueObjects;
 using DDD.Infrastructure.SQLite;
 using System;
-using System.ComponentModel;
 
 namespace DDD.WinForm.ViewModels
 {
-    public class WeatherLatestViewModel : INotifyPropertyChanged
+    public class WeatherLatestViewModel : ViewModelBase
     {
         private IＷeatherRepository _ｗeather;
 
@@ -36,11 +34,7 @@ namespace DDD.WinForm.ViewModels
             }
             set
             {
-                if (_areaIdText == value) // 値が同じ場合はなにもしない
-                    return;
-
-                _areaIdText = value;
-                OnPropertyChanged(nameof(AreaIdText));
+                SetProperty(ref _areaIdText, value);
             }
         }
 
@@ -53,11 +47,7 @@ namespace DDD.WinForm.ViewModels
             }
             set
             {
-                if (_dataDateText == value) // 値が同じ場合はなにもしない
-                    return;
-
-                _dataDateText = value;
-                OnPropertyChanged(nameof(DataDateText));
+                SetProperty(ref _dataDateText, value);
             }
         }
 
@@ -70,11 +60,7 @@ namespace DDD.WinForm.ViewModels
             }
             set
             {
-                if (_conditionText == value) // 値が同じ場合はなにもしない
-                    return;
-
-                _conditionText = value;
-                OnPropertyChanged(nameof(ConditionText));
+                SetProperty(ref _conditionText, value);
 
             }
         }
@@ -88,15 +74,9 @@ namespace DDD.WinForm.ViewModels
             }
             set
             {
-                if (_temperatureText == value) // 値が同じ場合はなにもしない
-                    return;
-
-                _temperatureText = value;
-                OnPropertyChanged(nameof(TemperatureText));
+                SetProperty(ref _temperatureText, value);
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public void Search()
         {
@@ -107,14 +87,6 @@ namespace DDD.WinForm.ViewModels
                 ConditionText = entity.Condition.DisplayValue;
                 TemperatureText = entity.Temperature.DisplayValueWithUnitSpace;
             }
-
-            //OnPropertyChanged("");    // propertyNameを空文字にすると全てのプロパティに適用される
-        }
-
-        public void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this,
-                new PropertyChangedEventArgs(propertyName));
         }
 
     }
