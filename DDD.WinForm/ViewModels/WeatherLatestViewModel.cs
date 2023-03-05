@@ -15,7 +15,7 @@ namespace DDD.WinForm.ViewModels
         /// コンストラクタ(本番コード用)
         /// </summary>
         public WeatherLatestViewModel()
-            : this(new WeatherSQLite(), null)
+            : this(new WeatherSQLite(), new AreasSQLite())
         {
         }
 

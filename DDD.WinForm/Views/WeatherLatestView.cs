@@ -1,4 +1,5 @@
-﻿using DDD.Domain.ValueObjects;
+﻿using DDD.Domain.Entities;
+using DDD.Domain.ValueObjects;
 using DDD.Infrastructure.SQLite;
 using DDD.WinForm.ViewModels;
 using System;
@@ -20,9 +21,16 @@ namespace DDD.WinForm
         public WeatherLatestView()
         {
             InitializeComponent();
+            AreasComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             //AreasComboBox./*SelectedValue*/
             this.AreasComboBox.DataBindings.Add(
                 "SelectedValue", _viewModel, nameof(_viewModel.SelectedAreaId));
+            //AreasComboBox.DataSourceに取り出したAreasをバインド
+            this.AreasComboBox.DataBindings.Add(
+                "DataSource", _viewModel, nameof(_viewModel.Areas));
+            this.AreasComboBox.ValueMember = nameof(AreaEntity.AreaId);// 内部的な値
+            this.AreasComboBox.DisplayMember = nameof(AreaEntity.AreaName);// 表示される値
+
             this.DataDateLabel.DataBindings.Add(
                 "Text", _viewModel, nameof(_viewModel.DataDateText));
             this.ConditionLabel.DataBindings.Add(
