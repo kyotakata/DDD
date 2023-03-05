@@ -28,7 +28,7 @@ namespace DDD.Domain.ValueObjects
         {
             get
             {
-                return Value.RoundString(2);
+                return Value.RoundString(DecimalPoint);
             }
 
         }
@@ -37,7 +37,7 @@ namespace DDD.Domain.ValueObjects
         {
             get
             {
-                return Value.RoundString(2) + UnitName;
+                return Value.RoundString(DecimalPoint) + UnitName;
             }
 
         }
@@ -46,7 +46,7 @@ namespace DDD.Domain.ValueObjects
         {
             get
             {
-                return Value.RoundString(2) +" "+ UnitName;
+                return Value.RoundString(DecimalPoint) +" "+ UnitName;
             }
 
         }
