@@ -27,7 +27,25 @@ namespace DDD.Domain.ValueObjects
         {
             get
             {
+                return CommonFunc.RoundString(Value, 2);
+            }
+
+        }
+
+        public string DisplayValueWithUnit
+        {
+            get
+            {
                 return CommonFunc.RoundString(Value, 2) + UnitName;
+            }
+
+        }
+
+        public string DisplayValueWithUnitSpace
+        {
+            get
+            {
+                return CommonFunc.RoundString(Value, 2) +" "+ UnitName;
             }
 
         }
