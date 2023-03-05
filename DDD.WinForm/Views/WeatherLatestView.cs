@@ -20,8 +20,9 @@ namespace DDD.WinForm
         public WeatherLatestView()
         {
             InitializeComponent();
-            this.AreaIdTextBox.DataBindings.Add(
-                "Text", _viewModel, nameof(_viewModel.AreaIdText));
+            //AreasComboBox./*SelectedValue*/
+            this.AreasComboBox.DataBindings.Add(
+                "SelectedValue", _viewModel, nameof(_viewModel.SelectedAreaId));
             this.DataDateLabel.DataBindings.Add(
                 "Text", _viewModel, nameof(_viewModel.DataDateText));
             this.ConditionLabel.DataBindings.Add(
