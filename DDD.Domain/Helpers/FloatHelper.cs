@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DDD.WinForm.Common
+namespace DDD.Domain.Helpers
 {
-    public static class CommonFunc
+    public static class FloatHelper
     {
         public static string RoundString(float value, int decimalPoint)
         {
