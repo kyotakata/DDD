@@ -2,6 +2,7 @@
 using DDD.Domain.ValueObjects;
 using DDD.Infrastructure.SQLite;
 using DDD.WinForm.ViewModels;
+using DDD.WinForm.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,5 +49,12 @@ namespace DDD.WinForm
 
         }
 
+        private void ListButton_Click(object sender, EventArgs e)
+        {
+            using (var f = new WeatherListView())
+            {
+                f.ShowDialog();
+            }
+        }
     }
 }

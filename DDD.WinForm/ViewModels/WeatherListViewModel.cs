@@ -1,5 +1,6 @@
 ﻿using DDD.Domain.Entities;
 using DDD.Domain.Repositories;
+using DDD.Infrastructure.SQLite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,12 @@ namespace DDD.WinForm.ViewModels
     public class WeatherListViewModel : ViewModelBase
     {
         private IＷeatherRepository _weather;
+
+        public WeatherListViewModel()
+            :this(new WeatherSQLite())
+        {
+        }
+
         public WeatherListViewModel(IＷeatherRepository weather)
         {
             _weather = weather;
