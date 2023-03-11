@@ -8,6 +8,6 @@ namespace DDD.Domain.Entities
 {
     public interface IAreasRepository
     {
-        IReadOnlyList<AreaEntity> GetData();
+        IReadOnlyList<AreasEntity> GetData();
     }
 }

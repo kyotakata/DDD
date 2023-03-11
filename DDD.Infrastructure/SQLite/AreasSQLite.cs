@@ -10,7 +10,7 @@ namespace DDD.Infrastructure.SQLite
 {
     public sealed class AreasSQLite : IAreasRepository
     {
-        public IReadOnlyList<AreaEntity> GetData()
+        public IReadOnlyList<AreasEntity> GetData()
         {
             string sql = @"
 select AreaId,
@@ -18,7 +18,7 @@ select AreaId,
 from Areas";
 
 
-            var result = new List<AreaEntity>();
+            var result = new List<AreasEntity>();
             using (var connection = new SQLiteConnection(SQLiteHelper.ConnectionString))
             using (var command = new SQLiteCommand(sql, connection))
             {
@@ -27,7 +27,7 @@ from Areas";
                 {
                     while (reader.Read())
                     {
-                        result.Add(new AreaEntity(
+                        result.Add(new AreasEntity(
                             Convert.ToInt32(reader["AreaId"]),
                             Convert.ToString(reader["AreaName"])
                             ));

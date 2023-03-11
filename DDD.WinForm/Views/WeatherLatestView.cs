@@ -28,8 +28,8 @@ namespace DDD.WinForm
             //AreasComboBox.DataSourceに取り出したAreasをバインド
             this.AreasComboBox.DataBindings.Add(
                 "DataSource", _viewModel, nameof(_viewModel.Areas));
-            this.AreasComboBox.ValueMember = nameof(AreaEntity.AreaId);// 内部的な値
-            this.AreasComboBox.DisplayMember = nameof(AreaEntity.AreaName);// 表示される値
+            this.AreasComboBox.ValueMember = nameof(AreasEntity.AreaId);// 内部的な値
+            this.AreasComboBox.DisplayMember = nameof(AreasEntity.AreaName);// 表示される値
 
             this.DataDateLabel.DataBindings.Add(
                 "Text", _viewModel, nameof(_viewModel.DataDateText));

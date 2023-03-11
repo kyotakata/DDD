@@ -30,10 +30,10 @@ namespace DDDTest.Tests
                           22.1234f));
 
             var areasMock = new Mock<IAreasRepository>();
-            var areas = new List<AreaEntity>();
-            areas.Add(new AreaEntity(1, "東京"));
-            areas.Add(new AreaEntity(2, "神戸"));
-            areas.Add(new AreaEntity(3, "沖縄"));
+            var areas = new List<AreasEntity>();
+            areas.Add(new AreasEntity(1, "東京"));
+            areas.Add(new AreasEntity(2, "神戸"));
+            areas.Add(new AreasEntity(3, "沖縄"));
             areasMock.Setup(x => x.GetData()).Returns(areas);
 
 
