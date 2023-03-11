@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DDD.Domain.Entities
 {
-    public sealed class AreasEntity
+    public sealed class AreaEntity
     {
-        public AreasEntity(int areaId, string areaName)
+        public AreaEntity(int areaId, string areaName)
         {
             AreaId = areaId;
             AreaName = areaName;

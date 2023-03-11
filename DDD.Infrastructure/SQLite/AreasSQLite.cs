@@ -10,34 +10,23 @@ namespace DDD.Infrastructure.SQLite
 {
     public sealed class AreasSQLite : IAreasRepository
     {
-        public IReadOnlyList<AreasEntity> GetData()
+        public IReadOnlyList<AreaEntity> GetData()
         {
             string sql = @"
 select AreaId,
        AreaName
 from Areas";
 
-
-            var result = new List<AreasEntity>();
-            using (var connection = new SQLiteConnection(SQLiteHelper.ConnectionString))
-            using (var command = new SQLiteCommand(sql, connection))
-            {
-                connection.Open();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        result.Add(new AreasEntity(
-                            Convert.ToInt32(reader["AreaId"]),
-                            Convert.ToString(reader["AreaName"])
-                            ));
-                    }
-                }
-            }
-
-            return result.AsReadOnly();
+            return SQLiteHelper.Query(sql, CreateEntity);
 
         }
 
+        private AreaEntity CreateEntity(SQLiteDataReader reader)
+        {
+            return new AreaEntity(
+                            Convert.ToInt32(reader["AreaId"]),
+                            Convert.ToString(reader["AreaName"])
+                            );
+        }
     }
 }

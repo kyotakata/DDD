@@ -30,7 +30,7 @@ namespace DDD.WinForm.ViewModels
 
             foreach (var area in _areas.GetData())
             {
-                Areas.Add(new AreasEntity(area.AreaId, area.AreaName));
+                Areas.Add(new AreaEntity(area.AreaId, area.AreaName));
             }
         }
 
@@ -87,8 +87,8 @@ namespace DDD.WinForm.ViewModels
             }
         }
 
-        public BindingList<AreasEntity> Areas { get; set; }
-            = new BindingList<AreasEntity>();
+        public BindingList<AreaEntity> Areas { get; set; }
+            = new BindingList<AreaEntity>();
 
         public void Search()
         {
