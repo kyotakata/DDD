@@ -1,5 +1,6 @@
 ﻿using DDD.Domain.Entities;
 using DDD.Domain.Exceptions;
+using DDD.Domain.Helpers;
 using DDD.Domain.ValueObjects;
 using System;
 using System.ComponentModel;
@@ -36,10 +37,7 @@ namespace DDD.WinForm.ViewModels
 
         public void Save()
         {
-            if (SelectedAreaId == null)
-            {
-                throw new InputException("エリアを選択してください");
-            }
+            Guard.IsNull(SelectedAreaId, "エリアを選択してください");
         }
     }
 }
