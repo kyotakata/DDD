@@ -6,6 +6,7 @@ namespace DDD.Domain.Repositories
     public interface IＷeatherRepository
     {
         WeatherEntity GetLatest(int areaId);
-        IReadOnlyList<WeatherEntity> GetData(); 
+        IReadOnlyList<WeatherEntity> GetData();
+        void Save(WeatherEntity weather);
     }
 }

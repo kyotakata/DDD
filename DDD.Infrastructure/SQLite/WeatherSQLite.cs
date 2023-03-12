@@ -62,5 +62,9 @@ on A.AreaId = B.AreaId";
                 });
         }
 
+        public void Save(WeatherEntity weather)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
