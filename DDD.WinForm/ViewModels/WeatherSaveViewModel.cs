@@ -1,4 +1,5 @@
 ﻿using DDD.Domain.Entities;
+using DDD.Domain.Exceptions;
 using DDD.Domain.ValueObjects;
 using System;
 using System.ComponentModel;
@@ -33,5 +34,12 @@ namespace DDD.WinForm.ViewModels
         public BindingList<Condition> Conditions { get; set; }
             = new BindingList<Condition>(Condition.ToList());
 
+        public void Save()
+        {
+            if (SelectedAreaId == null)
+            {
+                throw new InputException("エリアを選択してください");
+            }
+        }
     }
 }
