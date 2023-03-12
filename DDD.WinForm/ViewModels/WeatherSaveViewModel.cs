@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DDD.Domain.ValueObjects;
+using System;
 
 namespace DDD.WinForm.ViewModels
 {
@@ -10,7 +7,9 @@ namespace DDD.WinForm.ViewModels
     {
         public WeatherSaveViewModel()
         {
-            DataDateValue = DateTime.Now;
+            DataDateValue = GetDateTime();
+            SelectedCondition = Condition.Sunny.Value;
+            TemperatureText = string.Empty;
         }
 
         // 基本的にViewModelのプロパティの型はコントロールのバインディングする型と合わせる
@@ -18,5 +17,6 @@ namespace DDD.WinForm.ViewModels
         public DateTime DataDateValue { get; set; }
         public object SelectedCondition { get; set; }    // ConboBoxのValueプロパティをデータバインドするのでobject型
         public string TemperatureText { get; set; }    // TextBoxのTextプロパティをデータバインドするのでstring型
+
     }
 }
