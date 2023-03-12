@@ -1,17 +1,7 @@
 ﻿using DDD.Domain.Entities;
-using DDD.Domain.ValueObjects;
-using DDD.Infrastructure.SQLite;
 using DDD.WinForm.ViewModels;
 using DDD.WinForm.Views;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DDD.WinForm
