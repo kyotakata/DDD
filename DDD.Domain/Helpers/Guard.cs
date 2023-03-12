@@ -16,5 +16,15 @@ namespace DDD.Domain.Helpers
                 throw new InputException(message);
             }
         }
+
+        public static float IsFloat(string o, string message)
+        {
+            if(!float.TryParse(o, out float temperature))
+            {
+                throw new InputException(message);
+            }
+
+            return temperature;
+        }
     }
 }

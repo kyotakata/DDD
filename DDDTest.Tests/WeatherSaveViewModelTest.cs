@@ -35,6 +35,12 @@ namespace DDDTest.Tests
 
             var ex = Assert.ThrowsException<InputException>(() => viewModel.Save());
             ex.Message.Is("エリアを選択してください");
+
+            viewModel.SelectedAreaId = 2;
+            ex = Assert.ThrowsException<InputException>(() => viewModel.Save());
+            ex.Message.Is("温度の入力に誤りがあります");
+
+
         }
     }
 }
