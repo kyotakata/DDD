@@ -31,6 +31,7 @@ namespace DDDTest.Tests
             viewModel.DataDateValue.Is(Convert.ToDateTime("2018/01/01 12:34:56"));
             viewModel.SelectedCondition.Is(1);
             viewModel.TemperatureText.Is("");
+            viewModel.TemperatureUnitName.Is("℃");
 
             viewModel.Areas.Count.Is(2);
             viewModel.Conditions.Count.Is(4);

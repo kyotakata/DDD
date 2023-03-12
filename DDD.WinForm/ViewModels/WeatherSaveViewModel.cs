@@ -3,6 +3,7 @@ using DDD.Domain.Exceptions;
 using DDD.Domain.Helpers;
 using DDD.Domain.Repositories;
 using DDD.Domain.ValueObjects;
+using DDD.Infrastructure.SQLite;
 using System;
 using System.ComponentModel;
 
@@ -12,6 +13,10 @@ namespace DDD.WinForm.ViewModels
     {
         private IＷeatherRepository _weather;
         private IAreasRepository _areas;
+
+        public WeatherSaveViewModel() : this(new WeatherSQLite(), new AreasSQLite())
+        {
+        }
 
         public WeatherSaveViewModel(
             IＷeatherRepository weather,
@@ -40,11 +45,12 @@ namespace DDD.WinForm.ViewModels
             = new BindingList<AreaEntity>();
         public BindingList<Condition> Conditions { get; set; }
             = new BindingList<Condition>(Condition.ToList());
+        public string TemperatureUnitName => Temperature.UnitName;
 
         public void Save()
         {
             Guard.IsNull(SelectedAreaId, "エリアを選択してください");
-            var temperature 
+            var temperature
                 = Guard.IsFloat(TemperatureText, "温度の入力に誤りがあります");
 
             var entity = new WeatherEntity(
