@@ -44,8 +44,8 @@ namespace DDDTest.Tests
 
             viewModel.TemperatureText = "12.345";
 
-            weatherMock.Setup(x => x.Save(It.IsAny<WeatherEntity>())).
-                Callback<WeatherEntity>(saveValue =>
+            weatherMock.Setup(x => x.Save(It.IsAny<WeatherEntity>())).    // おそらくここでSave関数のSetupを行う。.Returnsが指定されていないのはSave関数の戻り値の型がvoidであるため
+                Callback<WeatherEntity>(saveValue =>    // 以下の行で型パラメータにWeatherEntityを指定して、saveValueをWeatherEntityにしてWeatherEntityの中のプロパティの値があっているか確かめる
                 {
                     saveValue.AreaId.Value.Is(2);
                     saveValue.DataDate.Is(
