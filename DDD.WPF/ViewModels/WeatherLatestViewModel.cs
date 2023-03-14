@@ -1,4 +1,5 @@
 ﻿using DDD.Domain.Entities;
+using DDD.Domain.Exceptions;
 using DDD.Domain.Repositories;
 using DDD.Infrastructure.SQLite;
 using Prism.Commands;
@@ -39,16 +40,16 @@ namespace DDD.WPF.ViewModels
             }
         }
 
-        public object _selectedAreaId;
-        public object SelectedAreaId
+        public AreaEntity _selectedArea;
+        public AreaEntity SelectedArea
         {
             get
             {
-                return _selectedAreaId;
+                return _selectedArea;
             }
             set
             {
-                SetProperty(ref _selectedAreaId, value);
+                SetProperty(ref _selectedArea, value);
             }
         }
 
@@ -105,7 +106,12 @@ namespace DDD.WPF.ViewModels
 
         public void Search()
         {
-            var entity = _ｗeather.GetLatest(Convert.ToInt32(SelectedAreaId));
+            if(SelectedArea == null)
+            {
+                throw new InputException("地域を選択してください");
+            }
+
+            var entity = _ｗeather.GetLatest(SelectedArea.AreaId);
             if (entity == null)
             {
                 DataDateText = string.Empty;

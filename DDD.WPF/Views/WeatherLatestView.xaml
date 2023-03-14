@@ -11,7 +11,9 @@
             <ComboBox FontSize="20"
                       Width="200"
                       ItemsSource="{Binding Areas}"
-                      SelectedItem="{Binding SelectedAreas}"/>
+                      SelectedItem="{Binding SelectedAreas}"
+                      SelectedValuePath="AreaId"
+                      DisplayMemberPath="AreaName"/>
         </StackPanel>
     </Grid>
 </UserControl>
