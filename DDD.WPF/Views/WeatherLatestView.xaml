@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="DDD.WPF.Views.WeatherLatestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="地域"
+                   FontSize="20"
+                   Width="200"/>
+            <ComboBox FontSize="20"
+                      Width="200"
+                      ItemsSource="{Binding Areas}"
+                      SelectedItem="{Binding SelectedAreas}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
