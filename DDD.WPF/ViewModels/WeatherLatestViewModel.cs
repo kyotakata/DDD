@@ -38,6 +38,8 @@ namespace DDD.WPF.ViewModels
             {
                 Areas.Add(new AreaEntity(area.AreaId, area.AreaName));
             }
+
+            LatestButton = new DelegateCommand(LatestButtonExecute);
         }
 
         public AreaEntity _selectedArea;
@@ -93,6 +95,8 @@ namespace DDD.WPF.ViewModels
             }
         }
 
+        public DelegateCommand LatestButton { get; }
+
         private ObservableCollection<AreaEntity> _areas = new ObservableCollection<AreaEntity>();
 
         public ObservableCollection<AreaEntity> Areas 
@@ -104,7 +108,7 @@ namespace DDD.WPF.ViewModels
             }
         }
 
-        public void Search()
+        private void LatestButtonExecute()
         {
             if(SelectedArea == null)
             {
