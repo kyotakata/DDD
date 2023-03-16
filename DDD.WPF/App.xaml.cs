@@ -1,4 +1,5 @@
 ﻿using DDD.Domain.Exceptions;
+using DDD.WPF.ViewModels;
 using DDD.WPF.Views;
 using Prism.Ioc;
 using System.Windows;
@@ -61,6 +62,7 @@ namespace DDD.WPF
         {
             containerRegistry.RegisterForNavigation<WeatherLatestView>();
             containerRegistry.RegisterForNavigation<WeatherListView>();
+            containerRegistry.RegisterDialog<WeatherSaveView, WeatherSaveViewModel>();
         }
     }
 }
