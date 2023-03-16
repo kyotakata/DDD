@@ -5,6 +5,7 @@
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
         <DataGrid  ItemsSource="{Binding Weathers}"
+                   SelectedItem="{Binding SelectedWeather}"
                    AutoGenerateColumns="False"
                    RowHeight="30"
                    FontSize="16"

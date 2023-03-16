@@ -42,5 +42,13 @@ namespace DDD.WPF.ViewModels
             }
         }
 
+        private WeatherListViewModelWeather _selectedWeather;
+        public WeatherListViewModelWeather SelectedWeather
+        {
+            get { return _selectedWeather; }
+            set { SetProperty(ref _selectedWeather, value); }
+        }
+
+        //
     }
 }
