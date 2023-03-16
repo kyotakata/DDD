@@ -14,7 +14,7 @@ using System.Linq;
 
 namespace DDD.WPF.ViewModels
 {
-	public class WeatherSaveViewModel : BindableBase, IDialogAware
+	public class WeatherSaveViewModel : ViewModelBase, IDialogAware
 	{
         private IＷeatherRepository _weather;
         private IAreasRepository _areasRepository;

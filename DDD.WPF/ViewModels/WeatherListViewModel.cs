@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace DDD.WPF.ViewModels
 {
-    public class WeatherListViewModel : BindableBase
+    public class WeatherListViewModel : ViewModelBase
     {
         private IＷeatherRepository _weather;
 
