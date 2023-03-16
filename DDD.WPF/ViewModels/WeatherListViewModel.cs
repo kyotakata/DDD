@@ -28,6 +28,8 @@ namespace DDD.WPF.ViewModels
             {
                 Weathers.Add(new WeatherListViewModelWeather(entity));
             }
+
+            UpdateButton = new DelegateCommand(UpdateButtonExecute);
         }
 
         private ObservableCollection<WeatherListViewModelWeather> _weathers
@@ -49,6 +51,11 @@ namespace DDD.WPF.ViewModels
             set { SetProperty(ref _selectedWeather, value); }
         }
 
-        //
+        public DelegateCommand UpdateButton { get; }
+
+        private void UpdateButtonExecute()
+        {
+
+        }
     }
 }
