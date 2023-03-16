@@ -30,6 +30,7 @@ namespace DDD.WPF.ViewModels
             }
 
             UpdateButton = new DelegateCommand(UpdateButtonExecute);
+            DataGridSelectionChanged = new DelegateCommand(DataGridSelectionChangedExecute);
         }
 
         private ObservableCollection<WeatherListViewModelWeather> _weathers
@@ -52,10 +53,17 @@ namespace DDD.WPF.ViewModels
         }
 
         public DelegateCommand UpdateButton { get; }
+        public DelegateCommand DataGridSelectionChanged { get; }
 
         private void UpdateButtonExecute()
         {
 
         }
+
+        private void DataGridSelectionChangedExecute()
+        {
+
+        }
+
     }
 }
