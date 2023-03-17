@@ -28,7 +28,7 @@ namespace DDD.WPF.ViewModels
             IAreasRepository areas)
         {
             DataDateValue = GetDateTime();
-            SelectedCondition = Condition.Sunny.Value;
+            SelectedCondition = Condition.Sunny;
             TemperatureText = string.Empty;
 
             _weather = weather;
@@ -84,7 +84,20 @@ namespace DDD.WPF.ViewModels
             }
         }
         public DateTime? DataDateValue { get; set; }
-        public object SelectedCondition { get; set; }    // ConboBoxのValueプロパティをデータバインドするのでobject型
+
+        public Condition _selectedCondition;
+        public Condition SelectedCondition
+        {
+            get
+            {
+                return _selectedCondition;
+            }
+            set
+            {
+                SetProperty(ref _selectedCondition, value);
+
+            }
+        }
         public string TemperatureText { get; set; }    // TextBoxのTextプロパティをデータバインドするのでstring型
 
         private ObservableCollection<AreaEntity> _areas = new ObservableCollection<AreaEntity>();
@@ -121,7 +134,7 @@ namespace DDD.WPF.ViewModels
             var entity = new WeatherEntity(
                 SelectedArea.AreaId,
                 DataDateValue.Value,
-                Convert.ToInt32(SelectedCondition),
+                SelectedCondition.Value,
                 temperature
                 );
 
