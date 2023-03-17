@@ -83,7 +83,7 @@ namespace DDD.WPF.ViewModels
                 SetProperty(ref _selectedArea, value);
             }
         }
-        public DateTime DataDateValue { get; set; }
+        public DateTime? DataDateValue { get; set; }
         public object SelectedCondition { get; set; }    // ConboBoxのValueプロパティをデータバインドするのでobject型
         public string TemperatureText { get; set; }    // TextBoxのTextプロパティをデータバインドするのでstring型
 
@@ -114,12 +114,13 @@ namespace DDD.WPF.ViewModels
         public void Save()
         {
             Guard.IsNull(SelectedArea, "エリアを選択してください");
+            Guard.IsNull(DataDateValue, "日時を入力してください");
             var temperature
                 = Guard.IsFloat(TemperatureText, "温度の入力に誤りがあります");
 
             var entity = new WeatherEntity(
                 SelectedArea.AreaId,
-                DataDateValue,
+                DataDateValue.Value,
                 Convert.ToInt32(SelectedCondition),
                 temperature
                 );
