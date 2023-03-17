@@ -71,7 +71,18 @@ namespace DDD.WPF.ViewModels
 
 
         // 基本的にViewModelのプロパティの型はコントロールのバインディングする型と合わせる
-        public object SelectedAreaId { get; set; }    // ConboBoxのValueプロパティをデータバインドするのでobject型
+        public AreaEntity _selectedArea;
+        public AreaEntity SelectedArea
+        {
+            get
+            {
+                return _selectedArea;
+            }
+            set
+            {
+                SetProperty(ref _selectedArea, value);
+            }
+        }
         public DateTime DataDateValue { get; set; }
         public object SelectedCondition { get; set; }    // ConboBoxのValueプロパティをデータバインドするのでobject型
         public string TemperatureText { get; set; }    // TextBoxのTextプロパティをデータバインドするのでstring型
@@ -102,12 +113,12 @@ namespace DDD.WPF.ViewModels
 
         public void Save()
         {
-            Guard.IsNull(SelectedAreaId, "エリアを選択してください");
+            Guard.IsNull(SelectedArea, "エリアを選択してください");
             var temperature
                 = Guard.IsFloat(TemperatureText, "温度の入力に誤りがあります");
 
             var entity = new WeatherEntity(
-                Convert.ToInt32(SelectedAreaId),
+                SelectedArea.AreaId,
                 DataDateValue,
                 Convert.ToInt32(SelectedCondition),
                 temperature
