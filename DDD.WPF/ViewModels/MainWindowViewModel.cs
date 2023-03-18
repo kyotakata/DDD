@@ -33,6 +33,14 @@ namespace DDD.WPF.ViewModels
 
         }
 
+        private string _statusLabel = "--";
+        public string StatusLabel
+        {
+            get { return _statusLabel; }
+            set { SetProperty(ref _statusLabel, value); }
+        }
+
+
         public DelegateCommand WeatherLatestButton { get; }
         public DelegateCommand WeatherListButton { get; }
         public DelegateCommand WeatherSaveButton { get; }

@@ -63,6 +63,7 @@ namespace DDD.WPF
             containerRegistry.RegisterForNavigation<WeatherLatestView>();
             containerRegistry.RegisterForNavigation<WeatherListView>();
             containerRegistry.RegisterDialog<WeatherSaveView, WeatherSaveViewModel>();
+            containerRegistry.RegisterSingleton<MainWindowViewModel>();    // MainWindowViewModelをシングルトンにする
         }
     }
 }

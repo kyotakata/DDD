@@ -14,15 +14,19 @@ namespace DDD.WPF.ViewModels
     public class WeatherListViewModel : ViewModelBase
     {
         private IＷeatherRepository _weather;
+        private MainWindowViewModel _mainWindowViewModel;
 
-        public WeatherListViewModel()
-            : this(new WeatherSQLite())
+        public WeatherListViewModel(MainWindowViewModel mainWindowViewModel)// MainWindowViewModelをシングルトンとしているため指定できる
+            : this(new WeatherSQLite(), mainWindowViewModel)
         {
         }
 
-        public WeatherListViewModel(IＷeatherRepository weather)
+        public WeatherListViewModel(
+            IＷeatherRepository weather,
+            MainWindowViewModel mainWindowViewModel)
         {
             _weather = weather;
+            _mainWindowViewModel = mainWindowViewModel;
 
             foreach (var entity in _weather.GetData())
             {
@@ -59,7 +63,7 @@ namespace DDD.WPF.ViewModels
 
         private void UpdateButtonExecute()
         {
-
+            _mainWindowViewModel.StatusLabel = "検索しました。";
         }
 
         private void DataGridSelectionChangedExecute()
