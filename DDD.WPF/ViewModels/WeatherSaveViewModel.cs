@@ -3,29 +3,29 @@ using DDD.Domain.Helpers;
 using DDD.Domain.Repositories;
 using DDD.Domain.ValueObjects;
 using DDD.Infrastructure.SQLite;
+using DDD.WPF.Services;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
 
 namespace DDD.WPF.ViewModels
 {
-	public class WeatherSaveViewModel : ViewModelBase, IDialogAware
+    public class WeatherSaveViewModel : ViewModelBase, IDialogAware
 	{
         private IＷeatherRepository _weather;
         private IAreasRepository _areasRepository;
+        private IMessageService _messageService;
 
-        public WeatherSaveViewModel() : this(new WeatherSQLite(), new AreasSQLite())
+        public WeatherSaveViewModel() 
+            : this(new WeatherSQLite(), new AreasSQLite(), new MessageService())
         {
         }
 
         public WeatherSaveViewModel(
             IＷeatherRepository weather,
-            IAreasRepository areas)
+            IAreasRepository areas,
+            IMessageService messageService)
         {
             DataDateValue = GetDateTime();
             SelectedCondition = Condition.Sunny;
@@ -33,6 +33,7 @@ namespace DDD.WPF.ViewModels
 
             _weather = weather;
             _areasRepository = areas;
+            _messageService = messageService;
 
             foreach (var area in _areasRepository.GetData())
             {
@@ -142,6 +143,11 @@ namespace DDD.WPF.ViewModels
             var temperature
                 = Guard.IsFloat(TemperatureText, "温度の入力に誤りがあります");
 
+            if (_messageService.Question("保存しますか？") != System.Windows.MessageBoxResult.OK)
+            {
+                return;
+            }
+
             var entity = new WeatherEntity(
                 SelectedArea.AreaId,
                 DataDateValue.Value,
@@ -150,6 +156,8 @@ namespace DDD.WPF.ViewModels
                 );
 
             _weather.Save(entity);
+
+            _messageService.ShowDialog("保存しました。");
         }
 
     }
