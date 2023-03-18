@@ -38,7 +38,7 @@ namespace DDD.WPF.ViewModels
             {
                 Areas.Add(new AreaEntity(area.AreaId, area.AreaName));
             }
-
+            SaveButton = new DelegateCommand(SaveButtonExecute);
         }
 
         public string Title => "登録画面";
@@ -60,12 +60,10 @@ namespace DDD.WPF.ViewModels
 
         public void OnDialogClosed()
         {
-            throw new NotImplementedException();
         }
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            throw new NotImplementedException();
         }
 
 
@@ -98,7 +96,18 @@ namespace DDD.WPF.ViewModels
 
             }
         }
-        public string TemperatureText { get; set; }    // TextBoxのTextプロパティをデータバインドするのでstring型
+
+        private string _temperatureText;
+
+        public string TemperatureText    // TextBoxのTextプロパティをデータバインドするのでstring型
+        {
+            get { return _temperatureText; }
+            set
+            {
+                SetProperty(ref _temperatureText, value);
+            }
+        }
+
 
         private ObservableCollection<AreaEntity> _areas = new ObservableCollection<AreaEntity>();
 
@@ -124,7 +133,9 @@ namespace DDD.WPF.ViewModels
 
         public string TemperatureUnitName => Temperature.UnitName;
 
-        public void Save()
+        public DelegateCommand SaveButton { get; }
+
+        private void SaveButtonExecute()
         {
             Guard.IsNull(SelectedArea, "エリアを選択してください");
             Guard.IsNull(DataDateValue, "日時を入力してください");
